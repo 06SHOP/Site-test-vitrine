@@ -39,6 +39,7 @@
             background: url('/api/placeholder/1920/1080') center/cover no-repeat;
             z-index: -1;
             opacity: 0.7;
+            transition: transform 0.1s ease-out;
         }
         
         header {
@@ -414,7 +415,7 @@
 
         .guilds-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
         }
         
@@ -611,6 +612,7 @@
         <h2 class="section-title">Free Guilds</h2>
         <div class="guilds-container">
             <div class="guilds-grid">
+                <!-- Original 8 guilds -->
                 <div class="guild-card">
                     <div class="guild-info">
                         <div class="guild-icon">
@@ -621,7 +623,7 @@
                             <div class="guild-desc">Gaming Community</div>
                         </div>
                     </div>
-                    <a href="guilds/gamers.html" class="guild-join">Join</a>
+                    <a href="#join" class="guild-join">Join</a>
                 </div>
 
                 <div class="guild-card">
@@ -634,7 +636,7 @@
                             <div class="guild-desc">Creative Space</div>
                         </div>
                     </div>
-                    <a href="guilds/artists.html" class="guild-join">Join</a>
+                    <a href="#join" class="guild-join">Join</a>
                 </div>
 
                 <div class="guild-card">
@@ -647,7 +649,7 @@
                             <div class="guild-desc">Music Enthusiasts</div>
                         </div>
                     </div>
-                    <a href="guilds/music.html" class="guild-join">Join</a>
+                    <a href="#join" class="guild-join">Join</a>
                 </div>
 
                 <div class="guild-card">
@@ -660,7 +662,7 @@
                             <div class="guild-desc">Coding Community</div>
                         </div>
                     </div>
-                    <a href="guilds/developers.html" class="guild-join">Join</a>
+                    <a href="#join" class="guild-join">Join</a>
                 </div>
 
                 <div class="guild-card">
@@ -673,7 +675,7 @@
                             <div class="guild-desc">Film Discussion</div>
                         </div>
                     </div>
-                    <a href="guilds/movies.html" class="guild-join">Join</a>
+                    <a href="#join" class="guild-join">Join</a>
                 </div>
 
                 <div class="guild-card">
@@ -686,7 +688,7 @@
                             <div class="guild-desc">Learning Together</div>
                         </div>
                     </div>
-                    <a href="guilds/study.html" class="guild-join">Join</a>
+                    <a href="#join" class="guild-join">Join</a>
                 </div>
 
                 <div class="guild-card">
@@ -699,7 +701,7 @@
                             <div class="guild-desc">Reading Community</div>
                         </div>
                     </div>
-                    <a href="guilds/books.html" class="guild-join">Join</a>
+                    <a href="#join" class="guild-join">Join</a>
                 </div>
 
                 <div class="guild-card">
@@ -712,7 +714,268 @@
                             <div class="guild-desc">Workout Buddies</div>
                         </div>
                     </div>
-                    <a href="guilds/fitness.html" class="guild-join">Join</a>
+                    <a href="#join" class="guild-join">Join</a>
+                </div>
+                
+                <!-- Additional guilds to reach 26 total -->
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Space Explorers</div>
+                            <div class="guild-desc">Astronomy & Space</div>
+                        </div>
+                    </div>
+                    <a href="#join" class="guild-join">Join</a>
+                </div>
+                
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Tech Talk</div>
+                            <div class="guild-desc">Technology Discussion</div>
+                        </div>
+                    </div>
+                    <a href="#join" class="guild-join">Join</a>
+                </div>
+                
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Anime Fans</div>
+                            <div class="guild-desc">Anime & Manga</div>
+                        </div>
+                    </div>
+                    <a href="#join" class="guild-join">Join</a>
+                </div>
+                
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Foodies</div>
+                            <div class="guild-desc">Food & Cooking</div>
+                        </div>
+                    </div>
+                    <a href="#join" class="guild-join">Join</a>
+                </div>
+                
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Pet Lovers</div>
+                            <div class="guild-desc">Animal Enthusiasts</div>
+                        </div>
+                    </div>
+                    <a href="#join" class="guild-join">Join</a>
+                </div>
+                
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Travel Buddies</div>
+                            <div class="guild-desc">Travel Discussions</div>
+                        </div>
+                    </div>
+                    <a href="#join" class="guild-join">Join</a>
+                </div>
+                
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Science Guild</div>
+                            <div class="guild-desc">Scientific Topics</div>
+                        </div>
+                    </div>
+                    <a href="#join" class="guild-join">Join</a>
+                </div>
+                
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">History Buffs</div>
+                            <div class="guild-desc">Historical Events</div>
+                        </div>
+                    </div>
+                    <a href="#join" class="guild-join">Join</a>
+                </div>
+                
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Photography</div>
+                            <div class="guild-desc">Photo Sharing</div>
+                        </div>
+                    </div>
+                    <a href="#join" class="guild-join">Join</a>
+                </div>
+                
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Photography</div>
+                            <div class="guild-desc">Photo Sharing</div>
+                        </div>
+                    </div>
+                    <a href="#join" class="guild-join">Join</a>
+                </div>
+                
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Fashion Club</div>
+                            <div class="guild-desc">Style & Trends</div>
+                        </div>
+                    </div>
+                    <a href="#join" class="guild-join">Join</a>
+                </div>
+                
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">DIY Projects</div>
+                            <div class="guild-desc">Crafts & Making</div>
+                        </div>
+                    </div>
+                    <a href="#join" class="guild-join">Join</a>
+                </div>
+                
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Language Exchange</div>
+                            <div class="guild-desc">Learn Languages</div>
+                        </div>
+                    </div>
+                    <a href="#join" class="guild-join">Join</a>
+                </div>
+                
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Crypto Traders</div>
+                            <div class="guild-desc">Cryptocurrency</div>
+                        </div>
+                    </div>
+                    <a href="#join" class="guild-join">Join</a>
+                </div>
+                
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Gardening Club</div>
+                            <div class="guild-desc">Plants & Gardens</div>
+                        </div>
+                    </div>
+                    <a href="#join" class="guild-join">Join</a>
+                </div>
+                
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Mental Health</div>
+                            <div class="guild-desc">Support & Wellbeing</div>
+                        </div>
+                    </div>
+                    <a href="#join" class="guild-join">Join</a>
+                </div>
+                
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Board Games</div>
+                            <div class="guild-desc">Tabletop Gaming</div>
+                        </div>
+                    </div>
+                    <a href="#join" class="guild-join">Join</a>
+                </div>
+                
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Web3 & NFTs</div>
+                            <div class="guild-desc">Blockchain Tech</div>
+                        </div>
+                    </div>
+                    <a href="#join" class="guild-join">Join</a>
+                </div>
+                
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Startups</div>
+                            <div class="guild-desc">Entrepreneurship</div>
+                        </div>
+                    </div>
+                    <a href="#join" class="guild-join">Join</a>
+                </div>
+                
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Digital Art</div>
+                            <div class="guild-desc">Digital Creation</div>
+                        </div>
+                    </div>
+                    <a href="#join" class="guild-join">Join</a>
                 </div>
             </div>
         </div>
@@ -783,15 +1046,18 @@
             }
         }
         
-        // Parallax effect on mouse movement
+        // Improved parallax effect on mouse movement
         function initParallax() {
             const parallaxBg = document.getElementById('parallax');
+            const stars = document.getElementById('stars');
             
             document.addEventListener('mousemove', function(e) {
                 const x = e.clientX / window.innerWidth;
                 const y = e.clientY / window.innerHeight;
                 
-                parallaxBg.style.transform = `translate(-${x * 20}px, -${y * 20}px)`;
+                // Use translate3d for hardware acceleration
+                parallaxBg.style.transform = `translate3d(-${x * 20}px, -${y * 20}px, 0)`;
+                stars.style.transform = `translate3d(-${x * 10}px, -${y * 10}px, 0)`;
             });
         }
         
@@ -799,6 +1065,12 @@
         document.addEventListener('DOMContentLoaded', function() {
             createStars();
             initParallax();
+            
+            // Fix for initial parallax loading
+            setTimeout(() => {
+                document.getElementById('parallax').style.transition = 'transform 0.1s ease-out';
+                document.getElementById('stars').style.transition = 'transform 0.1s ease-out';
+            }, 100);
         });
     </script>
 </body>
