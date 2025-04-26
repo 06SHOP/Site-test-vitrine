@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spaceguilds - Serveur Discord</title>
+    <title>Spaceguilds - Discord Server</title>
     <style>
-        /* Variables de couleurs */
+        /* Color variables */
         :root {
-            --discord-purple: #8A2BE2; /* Couleur principale violette */
-            --discord-purple-light: #9D5DED; /* Violet plus clair pour hover */
+            --discord-purple: #8A2BE2;
+            --discord-purple-light: #9D5DED;
             --discord-dark: #1a1a2e;
             --discord-darker: #0f0f1a;
             --discord-light: #ffffff;
@@ -404,7 +404,97 @@
             box-shadow: 0 0 5px var(--discord-purple-light);
         }
         
-        /* Effet de parallaxe */
+        /* Server Grid Style */
+        .guilds-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .guilds-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .guild-card {
+            background-color: rgba(26, 26, 46, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(138, 43, 226, 0.1);
+        }
+        
+        .guild-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+            border-color: rgba(138, 43, 226, 0.3);
+        }
+        
+        .guild-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .guild-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            margin-right: 1rem;
+            background-color: var(--discord-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .guild-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .guild-details {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .guild-name {
+            font-weight: bold;
+            color: var(--discord-light);
+            margin-bottom: 0.2rem;
+        }
+        
+        .guild-desc {
+            font-size: 0.85rem;
+            color: var(--discord-gray);
+            background-color: rgba(26, 26, 46, 0.5);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+        
+        .guild-join {
+            background-color: var(--discord-purple);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .guild-join:hover {
+            background-color: var(--discord-purple-light);
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.7);
+        }
+        
+        /* Effect for parallax */
         .stars-container {
             position: fixed;
             top: 0;
@@ -445,6 +535,10 @@
             .section {
                 padding: 3rem 1rem;
             }
+            
+            .guilds-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -456,108 +550,198 @@
         <nav>
             <div class="logo">Spaceguilds</div>
             <ul class="nav-links">
-                <li><a href="#features">Fonctionnalités</a></li>
-                <li><a href="#community">Communauté</a></li>
-                <li><a href="#events">Événements</a></li>
-                <li><a href="#rules">Règles</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#community">Community</a></li>
+                <li><a href="#guilds">Guilds</a></li>
+                <li><a href="#rules">Rules</a></li>
             </ul>
-            <a href="#join" class="button">Rejoindre</a>
+            <a href="#join" class="button">Join</a>
         </nav>
     </header>
 
     <section class="hero">
         <div class="hero-content">
-            <h1>Bienvenue sur Spaceguilds</h1>
-            <p>Une communauté interstellaire passionnée, accueillante et active. Rejoins-nous pour explorer, jouer et partager des moments cosmiques inoubliables.</p>
-            <a href="#join" class="button">Rejoindre maintenant</a>
+            <h1>Welcome to Spaceguilds</h1>
+            <p>A welcoming, active and passionate community. Join us to chat, play and share unforgettable moments together.</p>
+            <a href="#join" class="button">Join Now</a>
         </div>
     </section>
 
     <section id="features" class="section">
-        <h2 class="section-title">Nos Constellations</h2>
+        <h2 class="section-title">Our Features</h2>
         <div class="features">
             <div class="feature">
                 <div class="feature-icon">💬</div>
-                <h3>Salons Galactiques</h3>
-                <p>Plusieurs salons dédiés à différents univers pour faciliter les discussions et permettre à chacun de trouver sa place dans notre galaxie.</p>
+                <h3>Themed Channels</h3>
+                <p>Multiple channels dedicated to different topics to facilitate discussions and allow everyone to find their place.</p>
             </div>
             <div class="feature">
                 <div class="feature-icon">🎮</div>
-                <h3>Voyages Ludiques</h3>
-                <p>Organisation régulière de sessions de jeu interstellaires entre membres pour renforcer les liens et explorer ensemble de nouveaux mondes virtuels.</p>
+                <h3>Gaming Sessions</h3>
+                <p>Regular gaming sessions between members to strengthen bonds and have fun together.</p>
             </div>
             <div class="feature">
                 <div class="feature-icon">🎵</div>
-                <h3>Ondes Cosmiques</h3>
-                <p>Profite de nos bots musicaux pour écouter les mélodies de l'univers en compagnie d'autres voyageurs stellaires.</p>
+                <h3>Music Bots</h3>
+                <p>Enjoy our music bots to listen to your favorite tracks with other members.</p>
             </div>
         </div>
     </section>
 
     <section id="community" class="community">
-        <h2 class="section-title">Notre Flotte Spatiale</h2>
+        <h2 class="section-title">Our Community</h2>
         <div class="testimonials">
             <div class="testimonial">
-                <p>"Ce serveur est vraiment une supernova! J'ai rencontré des personnes formidables et l'ambiance est toujours cosmique."</p>
-                <div class="testimonial-author">- CosmicAlex</div>
+                <p>"This server is really amazing! I've met great people and the atmosphere is always top-notch."</p>
+                <div class="testimonial-author">- Alex78</div>
             </div>
             <div class="testimonial">
-                <p>"Les modérateurs sont aussi réactifs que des trous noirs et l'ambiance est très respectueuse. Une des meilleures galaxies que j'ai explorées!"</p>
-                <div class="testimonial-author">- StarEmma</div>
+                <p>"The moderators are super responsive and the atmosphere is very respectful. One of the best servers I've joined!"</p>
+                <div class="testimonial-author">- Emma_G</div>
             </div>
             <div class="testimonial">
-                <p>"Je ne regrette pas d'avoir lancé mon vaisseau vers ce serveur. Les événements sont stellaires et la communauté est très accueillante."</p>
-                <div class="testimonial-author">- NebulaeGamer</div>
+                <p>"I don't regret joining this server. The community is very welcoming and the features are great."</p>
+                <div class="testimonial-author">- TheoGamer</div>
             </div>
         </div>
     </section>
 
-    <section id="events" class="section">
-        <h2 class="section-title">Événements Spatiaux</h2>
-        <div class="features">
-            <div class="feature">
-                <div class="feature-icon">🏆</div>
-                <h3>Tournoi Intergalactique</h3>
-                <p>Affrontez d'autres explorateurs dans un tournoi amical avec des artefacts cosmiques à la clé!</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🎬</div>
-                <h3>Cinéma Spatial</h3>
-                <p>Regardez des films de science-fiction ensemble et discutez-en en temps réel dans nos salons dédiés.</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🎁</div>
-                <h3>Trésors Stellaires</h3>
-                <p>Participez à nos quêtes régulières pour tenter de gagner des trésors exclusifs venus d'autres galaxies.</p>
+    <section id="guilds" class="section">
+        <h2 class="section-title">Free Guilds</h2>
+        <div class="guilds-container">
+            <div class="guilds-grid">
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Gamers Guild</div>
+                            <div class="guild-desc">Gaming Community</div>
+                        </div>
+                    </div>
+                    <a href="guilds/gamers.html" class="guild-join">Join</a>
+                </div>
+
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Artists Hub</div>
+                            <div class="guild-desc">Creative Space</div>
+                        </div>
+                    </div>
+                    <a href="guilds/artists.html" class="guild-join">Join</a>
+                </div>
+
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Music Lounge</div>
+                            <div class="guild-desc">Music Enthusiasts</div>
+                        </div>
+                    </div>
+                    <a href="guilds/music.html" class="guild-join">Join</a>
+                </div>
+
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Developers</div>
+                            <div class="guild-desc">Coding Community</div>
+                        </div>
+                    </div>
+                    <a href="guilds/developers.html" class="guild-join">Join</a>
+                </div>
+
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Movie Club</div>
+                            <div class="guild-desc">Film Discussion</div>
+                        </div>
+                    </div>
+                    <a href="guilds/movies.html" class="guild-join">Join</a>
+                </div>
+
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Study Group</div>
+                            <div class="guild-desc">Learning Together</div>
+                        </div>
+                    </div>
+                    <a href="guilds/study.html" class="guild-join">Join</a>
+                </div>
+
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Book Club</div>
+                            <div class="guild-desc">Reading Community</div>
+                        </div>
+                    </div>
+                    <a href="guilds/books.html" class="guild-join">Join</a>
+                </div>
+
+                <div class="guild-card">
+                    <div class="guild-info">
+                        <div class="guild-icon">
+                            <img src="/api/placeholder/48/48" alt="Guild icon">
+                        </div>
+                        <div class="guild-details">
+                            <div class="guild-name">Fitness Friends</div>
+                            <div class="guild-desc">Workout Buddies</div>
+                        </div>
+                    </div>
+                    <a href="guilds/fitness.html" class="guild-join">Join</a>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="rules" class="section">
-        <h2 class="section-title">Lois Cosmiques</h2>
+        <h2 class="section-title">Our Rules</h2>
         <div class="features">
             <div class="feature">
                 <div class="feature-icon">👋</div>
-                <h3>Harmonie Universelle</h3>
-                <p>Soyez respectueux envers tous les voyageurs, quels que soient leurs origines stellaires ou centres d'intérêt.</p>
+                <h3>Mutual Respect</h3>
+                <p>Be respectful to all members, regardless of their opinions, background, or interests.</p>
             </div>
             <div class="feature">
                 <div class="feature-icon">🚫</div>
-                <h3>Transmissions Appropriées</h3>
-                <p>Partagez uniquement du contenu adapté à tous les astronautes. Tout contenu inapproprié sera éjecté dans le vide spatial.</p>
+                <h3>Appropriate Content</h3>
+                <p>Share only content suitable for everyone. Any offensive or inappropriate content will be removed.</p>
             </div>
             <div class="feature">
                 <div class="feature-icon">🤝</div>
-                <h3>Alliance Interstellaire</h3>
-                <p>Encouragez l'entraide et la bienveillance au sein de notre flotte pour créer un univers positif où chacun peut briller.</p>
+                <h3>Support Each Other</h3>
+                <p>Encourage mutual help and kindness within our community to create a positive environment.</p>
             </div>
         </div>
     </section>
 
     <section id="join" class="cta">
-        <h2>Prêt à embarquer?</h2>
-        <p>Deviens membre de notre serveur Spaceguilds dès maintenant et découvre une galaxie qui n'attend que toi!</p>
-        <a href="https://discord.gg/zjbE7j5zmh" class="cta-button">Rejoindre le Serveur</a>
+        <h2>Ready to join us?</h2>
+        <p>Become a member of our Discord server now and discover a community that's waiting for you!</p>
+        <a href="https://discord.gg/zjbE7j5zmh" class="cta-button">Join Server</a>
     </section>
 
     <footer>
@@ -567,11 +751,11 @@
             <li><a href="#">YouTube</a></li>
             <li><a href="#">TikTok</a></li>
         </ul>
-        <p>&copy; 2025 Spaceguilds. Tous droits réservés.</p>
+        <p>&copy; 2025 Spaceguilds. All rights reserved.</p>
     </footer>
 
     <script>
-        // Création des étoiles
+        // Create stars
         function createStars() {
             const starsContainer = document.getElementById('stars');
             const starCount = 200;
@@ -580,25 +764,25 @@
                 const star = document.createElement('div');
                 star.className = 'star';
                 
-                // Taille aléatoire
+                // Random size
                 const size = Math.random() * 3;
                 star.style.width = size + 'px';
                 star.style.height = size + 'px';
                 
-                // Position aléatoire
+                // Random position
                 const posX = Math.random() * 100;
                 const posY = Math.random() * 100;
                 star.style.left = posX + '%';
                 star.style.top = posY + '%';
                 
-                // Animation délai aléatoire
+                // Animation random delay
                 star.style.animationDelay = Math.random() * 5 + 's';
                 
                 starsContainer.appendChild(star);
             }
         }
         
-        // Effet de parallaxe au mouvement de la souris
+        // Parallax effect on mouse movement
         function initParallax() {
             const parallaxBg = document.getElementById('parallax');
             
@@ -610,7 +794,7 @@
             });
         }
         
-        // Initialisation
+        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             createStars();
             initParallax();
