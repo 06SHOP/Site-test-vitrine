@@ -1,1 +1,620 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spaceguilds - Serveur Discord</title>
+    <style>
+        /* Variables de couleurs */
+        :root {
+            --discord-purple: #8A2BE2; /* Couleur principale violette */
+            --discord-purple-light: #9D5DED; /* Violet plus clair pour hover */
+            --discord-dark: #1a1a2e;
+            --discord-darker: #0f0f1a;
+            --discord-light: #ffffff;
+            --discord-gray: #8e9297;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--discord-darker);
+            color: var(--discord-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .parallax-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/api/placeholder/1920/1080') center/cover no-repeat;
+            z-index: -1;
+            opacity: 0.7;
+        }
+        
+        header {
+            background-color: rgba(10, 10, 20, 0.8);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--discord-light);
+            text-shadow: 0 0 10px var(--discord-purple), 0 0 20px var(--discord-purple);
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--discord-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--discord-purple);
+            text-shadow: 0 0 5px var(--discord-purple-light);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--discord-purple);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+            box-shadow: 0 0 10px var(--discord-purple-light);
+        }
+        
+        .button {
+            background-color: var(--discord-purple);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+        }
+        
+        .button:hover {
+            background-color: var(--discord-purple-light);
+            box-shadow: 0 0 15px var(--discord-purple), 0 0 30px var(--discord-purple-light);
+            transform: translateY(-2px);
+        }
+        
+        .button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(157, 93, 237, 0.3) 0%, rgba(138, 43, 226, 0) 70%);
+            transform: scale(0);
+            transition: transform 0.5s ease;
+        }
+        
+        .button:hover::before {
+            transform: scale(1);
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(138, 43, 226, 0.2) 0%, rgba(10, 10, 30, 0.8) 70%);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--discord-light);
+            text-shadow: 0 0 10px var(--discord-purple), 0 0 20px rgba(138, 43, 226, 0.7);
+            letter-spacing: 2px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--discord-light);
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+        }
+        
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            background: rgba(15, 15, 26, 0.7);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            color: var(--discord-purple);
+            text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: var(--discord-purple);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px var(--discord-purple);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature {
+            background-color: rgba(26, 26, 46, 0.8);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+        }
+        
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+            border-color: rgba(138, 43, 226, 0.5);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--discord-purple);
+            text-shadow: 0 0 10px rgba(138, 43, 226, 0.7);
+        }
+        
+        .feature h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: var(--discord-light);
+        }
+        
+        .community {
+            background-color: rgba(15, 15, 26, 0.8);
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(10px);
+        }
+        
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .testimonial {
+            background-color: rgba(10, 10, 20, 0.8);
+            padding: 2rem;
+            border-radius: 10px;
+            font-style: italic;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+        }
+        
+        .testimonial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
+            border-color: rgba(138, 43, 226, 0.5);
+        }
+        
+        .testimonial-author {
+            margin-top: 1rem;
+            font-style: normal;
+            font-weight: bold;
+            color: var(--discord-purple);
+            text-shadow: 0 0 5px rgba(138, 43, 226, 0.5);
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.5) 0%, rgba(26, 26, 46, 0.8) 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 2;
+            border-radius: 0;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(138, 43, 226, 0.7);
+        }
+        
+        .cta p {
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.2rem;
+        }
+        
+        .cta-button {
+            background-color: white;
+            color: var(--discord-purple);
+            padding: 1rem 2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+        }
+        
+        .cta-button:hover {
+            background-color: var(--discord-light);
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px var(--discord-purple), 0 0 40px rgba(138, 43, 226, 0.5);
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(157, 93, 237, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+            transform: scale(0);
+            transition: transform 0.5s ease;
+        }
+        
+        .cta-button:hover::before {
+            transform: scale(1);
+        }
+        
+        footer {
+            background-color: rgba(10, 10, 20, 0.9);
+            padding: 2rem;
+            text-align: center;
+            color: var(--discord-gray);
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(10px);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+            list-style: none;
+        }
+        
+        .social-links li {
+            margin: 0 1rem;
+        }
+        
+        .social-links a {
+            color: var(--discord-light);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .social-links a:hover {
+            color: var(--discord-purple);
+            text-shadow: 0 0 10px var(--discord-purple);
+        }
+        
+        .social-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--discord-purple);
+            transition: width 0.3s ease;
+        }
+        
+        .social-links a:hover::after {
+            width: 100%;
+            box-shadow: 0 0 5px var(--discord-purple-light);
+        }
+        
+        /* Effet de parallaxe */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -2;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: twinkle 5s infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            100% { opacity: 0.8; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars-container" id="stars"></div>
+    <div class="parallax-bg" id="parallax"></div>
+    
+    <header>
+        <nav>
+            <div class="logo">Spaceguilds</div>
+            <ul class="nav-links">
+                <li><a href="#features">Fonctionnalités</a></li>
+                <li><a href="#community">Communauté</a></li>
+                <li><a href="#events">Événements</a></li>
+                <li><a href="#rules">Règles</a></li>
+            </ul>
+            <a href="#join" class="button">Rejoindre</a>
+        </nav>
+    </header>
 
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Bienvenue sur Spaceguilds</h1>
+            <p>Une communauté interstellaire passionnée, accueillante et active. Rejoins-nous pour explorer, jouer et partager des moments cosmiques inoubliables.</p>
+            <a href="#join" class="button">Rejoindre maintenant</a>
+        </div>
+    </section>
+
+    <section id="features" class="section">
+        <h2 class="section-title">Nos Constellations</h2>
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">💬</div>
+                <h3>Salons Galactiques</h3>
+                <p>Plusieurs salons dédiés à différents univers pour faciliter les discussions et permettre à chacun de trouver sa place dans notre galaxie.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎮</div>
+                <h3>Voyages Ludiques</h3>
+                <p>Organisation régulière de sessions de jeu interstellaires entre membres pour renforcer les liens et explorer ensemble de nouveaux mondes virtuels.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎵</div>
+                <h3>Ondes Cosmiques</h3>
+                <p>Profite de nos bots musicaux pour écouter les mélodies de l'univers en compagnie d'autres voyageurs stellaires.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="community" class="community">
+        <h2 class="section-title">Notre Flotte Spatiale</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p>"Ce serveur est vraiment une supernova! J'ai rencontré des personnes formidables et l'ambiance est toujours cosmique."</p>
+                <div class="testimonial-author">- CosmicAlex</div>
+            </div>
+            <div class="testimonial">
+                <p>"Les modérateurs sont aussi réactifs que des trous noirs et l'ambiance est très respectueuse. Une des meilleures galaxies que j'ai explorées!"</p>
+                <div class="testimonial-author">- StarEmma</div>
+            </div>
+            <div class="testimonial">
+                <p>"Je ne regrette pas d'avoir lancé mon vaisseau vers ce serveur. Les événements sont stellaires et la communauté est très accueillante."</p>
+                <div class="testimonial-author">- NebulaeGamer</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="events" class="section">
+        <h2 class="section-title">Événements Spatiaux</h2>
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🏆</div>
+                <h3>Tournoi Intergalactique</h3>
+                <p>Affrontez d'autres explorateurs dans un tournoi amical avec des artefacts cosmiques à la clé!</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎬</div>
+                <h3>Cinéma Spatial</h3>
+                <p>Regardez des films de science-fiction ensemble et discutez-en en temps réel dans nos salons dédiés.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎁</div>
+                <h3>Trésors Stellaires</h3>
+                <p>Participez à nos quêtes régulières pour tenter de gagner des trésors exclusifs venus d'autres galaxies.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="rules" class="section">
+        <h2 class="section-title">Lois Cosmiques</h2>
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">👋</div>
+                <h3>Harmonie Universelle</h3>
+                <p>Soyez respectueux envers tous les voyageurs, quels que soient leurs origines stellaires ou centres d'intérêt.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🚫</div>
+                <h3>Transmissions Appropriées</h3>
+                <p>Partagez uniquement du contenu adapté à tous les astronautes. Tout contenu inapproprié sera éjecté dans le vide spatial.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🤝</div>
+                <h3>Alliance Interstellaire</h3>
+                <p>Encouragez l'entraide et la bienveillance au sein de notre flotte pour créer un univers positif où chacun peut briller.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="join" class="cta">
+        <h2>Prêt à embarquer?</h2>
+        <p>Deviens membre de notre serveur Spaceguilds dès maintenant et découvre une galaxie qui n'attend que toi!</p>
+        <a href="https://discord.gg/zjbE7j5zmh" class="cta-button">Rejoindre le Serveur</a>
+    </section>
+
+    <footer>
+        <ul class="social-links">
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">YouTube</a></li>
+            <li><a href="#">TikTok</a></li>
+        </ul>
+        <p>&copy; 2025 Spaceguilds. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        // Création des étoiles
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 200;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Taille aléatoire
+                const size = Math.random() * 3;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                
+                // Position aléatoire
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                star.style.left = posX + '%';
+                star.style.top = posY + '%';
+                
+                // Animation délai aléatoire
+                star.style.animationDelay = Math.random() * 5 + 's';
+                
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // Effet de parallaxe au mouvement de la souris
+        function initParallax() {
+            const parallaxBg = document.getElementById('parallax');
+            
+            document.addEventListener('mousemove', function(e) {
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+                
+                parallaxBg.style.transform = `translate(-${x * 20}px, -${y * 20}px)`;
+            });
+        }
+        
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+            initParallax();
+        });
+    </script>
+</body>
+</html>
